@@ -1,6 +1,6 @@
 require "lf/roles/version"
 
-module LF
+module Lf
   module Roles
     def roles=(roles)
       self.roles_mask = (roles & self.class.possible_roles).map { |r| 2**self.class.possible_roles.index(r) }.inject(0, :+)
