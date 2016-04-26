@@ -27,7 +27,7 @@ Or install it yourself as:
     possible_role "admin"
     possible_role "patron"
   end
-```ruby
+```
 
 ## Development
 
