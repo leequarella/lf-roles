@@ -20,6 +20,17 @@ module Lf
       !(roles & check_roles).empty?
     end
 
+    def is_only?(role)
+      return false if !self.is?(role)
+      is_only = self.is?(role)
+      self.class.possible_roles.each do |this_role|
+        next if this_role == role
+        is_only = !self.is?(this_role)
+      end
+      return is_only
+    end
+
+
     def self.included(base)
       base.extend(ClassMethods)
     end
@@ -42,7 +53,7 @@ module Lf
            mask_array.push(i)
           end
         end
-        users = self.where(roles_mask: mask_array)
+        return self.where(roles_mask: mask_array)
       end
 
       def possible_roles
